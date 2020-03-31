@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 2028-4</title>
+<style>
+.correct{
+  background:lime
+ 
+}
+.incorrect{
+  background:red;
+}
+
+body{
+  background:black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
+</style>
+</head>
+<body translate="no">
+<img style="position:absolute;" src="http://legacy.earlham.edu/~tobeyfo/musictheory/Book1/FFH1_CH3/images_CH3/59_solfegechromatic_0006.png" alt="chromaticsolfege.png" class="center" />
+<audio id="myAudio" controls>
+<source src="https://kayleemorris.github.io/solfege/solfege.m4a" type="audio/mpeg">
+</audio>
+<ol>
+<input style="position:absolute; top:95px; left:150px; width:20px; height:15px" data-correct="Di" data-start-"0" data-duration="1200" />
+<input style="position:absolute;
+top:95px; left:235px; width:20px; height:15px" data-correct="Ri" /> <input style="position:absolute;
+top:95px; left:357px; width:20px; height:15px" data-correct="Fi" />
+<input style="position:absolute;
+top:95px; left:442px; width:20px; height:15px" data-correct="Si" />
+<input style="position:absolute;
+top:95px; left:522px; width:20px; height:15px" data-correct="Li" />
+<input style="position:absolute;
+top:240px; left:164px; width:20px; height:15px" data-correct="Te" /> <input style="position:absolute;
+top:240px; left:247px; width:20px; height:15px" data-correct="Le" />
+<input style="position:absolute;
+top:240px; left:334px; width:20px; height:15px" data-correct="Se" />
+<input style="position:absolute;
+top:240px; left:459px; width:20px; height:15px" data-correct="Me" />
+<input style="position:absolute;
+top:240px; left:541px; width:30px; height:15px" data-correct="Rah" />
+<ol>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script id="rendered-js">
+$("input").change(onChange);
+
+x = document.getElementById("myAudio");
+function onChange(evt){
+  let start = $(this).data("start");
+  if(start)
+  x.currentTime = start;
+  x.play();
+  let duration = $(this).data("duration");
+  if(duration) setTimeout(function() {x.pause()},duration)
+}
+
+$("input").change(onChange);
+
+function onChange(evt){
+  let correct =$(this).data("correct");
+  let response = $(this).val();
+  console.log(correct,response)
+  if(correct==response){
+    $(this).removeClass("incorrect").addClass("correct");
+  } else{
+    $(this).removeClass("correct").addClass("incorrect");
+  }
+}
+    </script>
+</body>
+</html>
